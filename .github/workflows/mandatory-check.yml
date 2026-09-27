@@ -1,0 +1,50 @@
+name: SIH 2026 Mandatory Check
+
+on:
+  push:
+    branches:
+      - "**"
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  mandatory-check:
+    name: Check SIH Mandatory Documents
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run mandatory document checker
+        id: checker
+        run: |
+          python scripts/mandatory_check.py
+
+      - name: Apply labels to Pull Request
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python scripts/apply_labels.py
+
+      - name: Show result
+        if: always()
+        run: |
+          echo "Mandatory document check completed."
