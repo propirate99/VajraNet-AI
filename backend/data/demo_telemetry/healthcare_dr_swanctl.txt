@@ -1,0 +1,20 @@
+# strongSwan swanctl --list-sas output
+# Tunnel: Trauma-Centre to National-Registry (Healthcare Disaster Recovery Node)
+# Status: ESTABLISHED, Evidence: Verified Gateway Telemetry
+# Disclaimer: Synthetic Demo Data — Payload Not Inspected
+
+hosp-dr-tun: #12, ESTABLISHED, IKEv2, 12a87bc40011ee22_i* ef331a9088776655_r
+  local  '192.168.100.15' @ 192.168.100.15:4500
+  remote '10.50.2.1' @ 10.50.2.1:4500
+  AES_GCM_16_256/PRF_HMAC_SHA2_256/MODP_2048
+  established 2800s ago, rekeying in 800s
+  hosp-child: #12, INSTALLED, TUNNEL, reqid 12
+    installed 2800s ago, rekeying in 800s, expires in 800s
+    in  12a87bc4, 3590200 bytes, 3210 packets, 2s ago
+    out ef331a90, 3590200 bytes, 3210 packets, 2s ago
+    local  192.168.100.0/24
+    remote 10.50.0.0/16
+    AES_GCM_16_256
+    pfs=yes, modp2048
+    replay_window = 64
+    lifetime = 3600

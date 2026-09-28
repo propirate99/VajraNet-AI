@@ -1,0 +1,25 @@
+{
+  "scenario": "Healthcare Disaster Recovery Tunnel (Trauma-Centre to National-Registry)",
+  "sector": "Healthcare",
+  "ike_version": "IKEv2",
+  "ipsec_protocol": "ESP (Protocol 50)",
+  "nat_t_detected": true,
+  "endpoints": {
+    "source_ip": "192.168.100.15",
+    "destination_ip": "10.50.2.1",
+    "udp_ports": [4500]
+  },
+  "spis_observed": ["0x12a87bc4", "0xef331a90"],
+  "packet_count": 6420,
+  "bytes_transferred": 7180400,
+  "mean_packet_length": 1118.4,
+  "packet_length_std": 380.5,
+  "packets_per_second": 107.0,
+  "mean_interarrival_ms": 9.3,
+  "interarrival_std_ms": 3.2,
+  "flow_duration_seconds": 60.0,
+  "burst_count": 6,
+  "rekey_events": 1,
+  "evidence_classification": "Observed",
+  "disclaimer": "Synthetic Demo Data — Payload Not Inspected"
+}

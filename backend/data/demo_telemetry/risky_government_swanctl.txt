@@ -1,0 +1,22 @@
+# strongSwan swanctl --list-sas output
+# Tunnel: District-Office to State-Data-Centre (Government Administrative Node)
+# Status: ESTABLISHED (Degraded / Non-Compliant), Evidence: Verified Gateway Telemetry
+# Disclaimer: Synthetic Demo Data — Payload Not Inspected
+
+gov-state-tun: #4, ESTABLISHED, IKEv2, 7b11a904d9a24410_i* 99a12e43bc09117a_r
+  local  '172.20.20.1' @ 172.20.20.1:4500
+  remote '172.20.20.2' @ 172.20.20.2:4500
+  AES_CBC_128/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256/MODP_1024
+  established 14200s ago, rekeying in 72200s
+  AUTHENTICATION_FAILED: previous IKE SA handshake attempt failed (retransmit timeout)
+  AUTHENTICATION_FAILED: peer ID mismatch during initial proposal negotiation
+  gov-child: #4, INSTALLED, TUNNEL, reqid 4
+    installed 14200s ago, rekeying in 72200s, expires in 72200s
+    in  7b11a904, 4906200 bytes, 4460 packets, 1s ago
+    out a4c90123, 4906200 bytes, 4460 packets, 1s ago
+    local  10.20.0.0/16
+    remote 10.30.0.0/16
+    aes-cbc, hmac-sha256-128
+    pfs=no
+    replay_window = 0
+    lifetime = 86400

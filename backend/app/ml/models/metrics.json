@@ -1,0 +1,26 @@
+{
+  "model_name": "RandomForest-IPsec-Metadata-Classifier",
+  "version": "1.0-sovereign",
+  "accuracy": 1.0,
+  "f1_weighted": 1.0,
+  "features": [
+    "mean_packet_length",
+    "packet_length_std",
+    "packets_per_second",
+    "bytes_per_second",
+    "mean_interarrival_ms",
+    "interarrival_std_ms",
+    "upload_download_ratio",
+    "flow_duration_seconds",
+    "packet_count",
+    "burst_count"
+  ],
+  "classes": [
+    "bulk_transfer_like",
+    "icmp_like",
+    "idle_keepalive",
+    "video_like_udp",
+    "web_like"
+  ],
+  "limitation_note": "Trained exclusively on controlled synthetic metadata. No payload decryption."
+}

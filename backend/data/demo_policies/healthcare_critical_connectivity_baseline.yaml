@@ -1,0 +1,47 @@
+# VajraNet AI Security Policy Baseline
+# Sector: Healthcare, Hospitals & Diagnostic Nodes
+# Authority: National Health Authority (NHA) & DISHA Cybersecurity Guidelines 2026
+
+policy_id: "POL-HLTH-2026"
+name: "Healthcare Critical Connectivity Baseline"
+sector: "Healthcare"
+version: "1.9.0"
+status: "Active"
+description: "High-reliability, HIPAA/DISHA compliant IPsec configuration standards for hospital headquarters, diagnostic centers, and organ donor registries."
+
+cryptographic_standards:
+  approved_ike_versions:
+    - "IKEv2"
+  disallowed_ike_versions:
+    - "IKEv1"
+  approved_ciphers:
+    - "AES-256-GCM"
+    - "AES-128-GCM"
+  deprecated_ciphers:
+    - "DES"
+    - "3DES"
+    - "RC4"
+  approved_integrity:
+    - "AEAD-integrated"
+    - "HMAC-SHA256"
+  deprecated_integrity:
+    - "MD5"
+    - "SHA1"
+  pfs_required: true
+  minimum_dh_group: 14  # MODP 2048
+
+tunnel_parameters:
+  max_sa_lifetime_seconds: 14400 # 4 hours
+  recommended_sa_lifetime_seconds: 3600 # 1 hour
+  anti_replay_window_minimum: 64
+  require_dead_peer_detection: true
+  dpd_timeout_seconds: 20
+
+metadata_leakage_controls:
+  max_packet_size_fingerprinting_risk: "Medium"
+  anti_traffic_analysis_padding_recommended: false
+  permitted_nat_traversal: true
+
+evidence_requirements:
+  require_gateway_telemetry_for_pfs_verification: true
+  zero_payload_decryption_mandate: true

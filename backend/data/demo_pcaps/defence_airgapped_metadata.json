@@ -1,0 +1,26 @@
+{
+  "scenario": "Defence Air-Gapped Tactical Tunnel (Command-Post to Forward-Base)",
+  "sector": "Defence",
+  "ike_version": "IKEv2",
+  "ipsec_protocol": "ESP (Protocol 50)",
+  "nat_t_detected": false,
+  "endpoints": {
+    "source_ip": "10.100.1.1",
+    "destination_ip": "10.100.1.2",
+    "udp_ports": [500]
+  },
+  "spis_observed": ["0x9d4e11a0", "0x33b87cf1", "0x51c24e89"],
+  "packet_count": 4820,
+  "bytes_transferred": 3856000,
+  "mean_packet_length": 800.0,
+  "packet_length_std": 14.2,
+  "packets_per_second": 80.3,
+  "mean_interarrival_ms": 12.4,
+  "interarrival_std_ms": 0.8,
+  "flow_duration_seconds": 60.0,
+  "burst_count": 0,
+  "rekey_events": 2,
+  "anti_traffic_analysis_padding_detected": true,
+  "evidence_classification": "Observed",
+  "disclaimer": "Synthetic Demo Data — Payload Not Inspected"
+}

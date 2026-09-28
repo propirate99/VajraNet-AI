@@ -1,0 +1,20 @@
+# strongSwan swanctl --list-sas output
+# Tunnel: Command-Post to Forward-Base (Tactical Air-Gapped Mesh)
+# Status: ESTABLISHED (Hardened), Evidence: Verified Gateway Telemetry
+# Disclaimer: Synthetic Demo Data — Payload Not Inspected
+
+def-fwd-tun: #9, ESTABLISHED, IKEv2, 9d4e11a0ff1239aa_i* 33b87cf1891044bb_r
+  local  '10.100.1.1' @ 10.100.1.1:500
+  remote '10.100.1.2' @ 10.100.1.2:500
+  AES_GCM_16_256/PRF_HMAC_SHA2_384/ECP_384
+  established 720s ago, rekeying in 1080s
+  def-child: #9, INSTALLED, TUNNEL, reqid 9
+    installed 720s ago, rekeying in 1080s, expires in 2880s
+    in  9d4e11a0, 1928000 bytes, 2410 packets, 1s ago
+    out 51c24e89, 1928000 bytes, 2410 packets, 1s ago
+    local  10.100.10.0/24
+    remote 10.100.20.0/24
+    AES_GCM_16_256
+    pfs=yes, ecp384
+    replay_window = 128
+    lifetime = 1800

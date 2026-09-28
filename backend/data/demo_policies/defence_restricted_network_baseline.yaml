@@ -1,0 +1,48 @@
+# VajraNet AI Security Policy Baseline
+# Sector: Defence Tactical & Air-Gapped Networks
+# Authority: Tri-Services Cyber Defence Command (TSCDC) Mandate 09/2026
+
+policy_id: "POL-DEF-2026"
+name: "Defence Tactical Air-Gapped Network Baseline"
+sector: "Defence"
+version: "3.1.0"
+status: "Active"
+description: "Ultra-hardened IPsec specifications for sovereign defence command posts, forward bases, and tactical mesh links."
+
+cryptographic_standards:
+  approved_ike_versions:
+    - "IKEv2"
+  disallowed_ike_versions:
+    - "IKEv1"
+  approved_ciphers:
+    - "AES-256-GCM"
+  deprecated_ciphers:
+    - "AES-CBC-*"
+    - "3DES"
+    - "DES"
+    - "BLOWFISH"
+  approved_integrity:
+    - "AEAD-integrated"
+  deprecated_integrity:
+    - "MD5"
+    - "SHA1"
+    - "HMAC-MD5"
+  pfs_required: true
+  minimum_dh_group: 19  # ECP 256, ECP 384, or MODP 3072+
+
+tunnel_parameters:
+  max_sa_lifetime_seconds: 3600  # 1 hour maximum
+  recommended_sa_lifetime_seconds: 1800 # 30 minutes
+  anti_replay_window_minimum: 128
+  require_dead_peer_detection: true
+  dpd_timeout_seconds: 10
+
+metadata_leakage_controls:
+  max_packet_size_fingerprinting_risk: "Low"
+  anti_traffic_analysis_padding_recommended: true
+  constant_rate_traffic_padding_enforced: true
+  permitted_nat_traversal: false # Pure routed infrastructure only
+
+evidence_requirements:
+  require_gateway_telemetry_for_pfs_verification: true
+  zero_payload_decryption_mandate: true

@@ -1,0 +1,20 @@
+# strongSwan swanctl --list-sas output
+# Tunnel: Hospital-HQ to Diagnostic-Lab (Healthcare Critical Node)
+# Status: ESTABLISHED, Evidence: Verified Gateway Telemetry
+# Disclaimer: Synthetic Demo Data — Payload Not Inspected
+
+hosp-diag-tun: #1, ESTABLISHED, IKEv2, 5b88c3f2d01a4e12_i* c54b21d819e4210a_r
+  local  '172.20.10.1' @ 172.20.10.1:500
+  remote '172.20.10.2' @ 172.20.10.2:500
+  AES_GCM_16_256/PRF_HMAC_SHA2_384/MODP_2048
+  established 3140s ago, rekeying in 460s
+  hosp-child: #1, REKEYED, TUNNEL, reqid 1
+    installed 3140s ago, rekeying in 460s, expires in 1060s
+    in  c54b21d8, 1342100 bytes, 1570 packets, 3s ago
+    out f8a91a43, 1301700 bytes, 1570 packets, 3s ago
+    local  192.168.10.0/24
+    remote 192.168.20.0/24
+    AES_GCM_16_256
+    pfs=yes, modp2048
+    replay_window = 64
+    lifetime = 3600

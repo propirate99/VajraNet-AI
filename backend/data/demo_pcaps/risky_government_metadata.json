@@ -1,0 +1,26 @@
+{
+  "scenario": "Risky Government Tunnel (District-Office to State-Data-Centre)",
+  "sector": "Government",
+  "ike_version": "IKEv2",
+  "ipsec_protocol": "ESP (Protocol 50)",
+  "nat_t_detected": true,
+  "endpoints": {
+    "source_ip": "172.20.20.1",
+    "destination_ip": "172.20.20.2",
+    "udp_ports": [500, 4500]
+  },
+  "spis_observed": ["0x7b11a904"],
+  "packet_count": 8920,
+  "bytes_transferred": 9812400,
+  "mean_packet_length": 1100.0,
+  "packet_length_std": 240.2,
+  "packets_per_second": 148.6,
+  "mean_interarrival_ms": 6.2,
+  "interarrival_std_ms": 4.8,
+  "flow_duration_seconds": 60.0,
+  "burst_count": 18,
+  "failed_ike_attempts_detected": 12,
+  "rekey_events": 0,
+  "evidence_classification": "Observed",
+  "disclaimer": "Synthetic Demo Data — Payload Not Inspected"
+}

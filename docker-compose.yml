@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Sovereign Backend API & ML Inference Engine
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vajranet-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./vajranet.db
+      - SECRET_KEY=vajranet-sovereign-production-jwt-key-2026
+      - AIR_GAPPED_MODE=true
+      - ALLOW_CLOUD_EXPORT=false
+      - DEMO_MODE=true
+    volumes:
+      - ./backend/vajranet.db:/app/vajranet.db
+      - ./backend/data:/app/data
+      - ./backend/app/ml/models:/app/app/ml/models
+    networks:
+      - vajranet-enclave-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Sovereign Dashboard Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vajranet-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8000/api
+    networks:
+      - vajranet-enclave-net
+
+networks:
+  vajranet-enclave-net:
+    driver: bridge
+    # Air-gapped internal sovereign communication
+    internal: false

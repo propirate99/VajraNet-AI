@@ -1,0 +1,25 @@
+{
+  "scenario": "Secure Hospital Tunnel (Hospital-HQ to Diagnostic-Lab)",
+  "sector": "Healthcare",
+  "ike_version": "IKEv2",
+  "ipsec_protocol": "ESP (Protocol 50)",
+  "nat_t_detected": false,
+  "endpoints": {
+    "source_ip": "172.20.10.1",
+    "destination_ip": "172.20.10.2",
+    "udp_ports": [500]
+  },
+  "spis_observed": ["0xc54b21d8", "0xf8a91a43"],
+  "packet_count": 3140,
+  "bytes_transferred": 2643800,
+  "mean_packet_length": 842.0,
+  "packet_length_std": 112.5,
+  "packets_per_second": 52.3,
+  "mean_interarrival_ms": 7.8,
+  "interarrival_std_ms": 1.4,
+  "flow_duration_seconds": 60.0,
+  "burst_count": 3,
+  "rekey_events": 1,
+  "evidence_classification": "Observed",
+  "disclaimer": "Synthetic Demo Data — Payload Not Inspected"
+}
